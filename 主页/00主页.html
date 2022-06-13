@@ -1,0 +1,383 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Metro TIU轨道交通网</title>
+<script>
+window.onload = function(){
+//轮播初始化
+var lunbo = document.getElementById('content');
+var imgs = lunbo.getElementsByTagName('img'); 
+var uls = lunbo.getElementsByTagName('ul');
+var lis = lunbo.getElementsByTagName('li');
+//初始状态下，⼀个圆圈为⾼亮模式
+lis[0].style.fontSize = '26px';
+lis[0].style.color = '#fff';
+//定义⼀个全局变量，⽤来进⾏⾃动轮播图⽚顺序的变化
+var pic_index = 1;
+//⾃动轮播.使⽤pic_time记录播放，可以随时使⽤clearInterval()清除掉。
+var pic_time = setInterval(autobofang,3000);
+//⼿动轮播
+for(var i=0;i<lis.length;i++){ 
+lis[i].addEventListener("mouseover",change,false);
+}
+function change(event){ 
+var event=event||window.event;
+var target=event.target||event.srcElement; 
+var children = target.parentNode.children; 
+for(var i=0;i<children.length;i++){
+if(target == children[i]){ 
+picChange(i); 
+} 
+}
+} 
+//图⽚切换函数
+function picChange(i){ 
+//让所有图⽚都不显⽰，所有圆圈都为普通样式
+for(var j=0;j<imgs.length;j++){
+imgs[j].style.display = 'none'; lis[j].style.fontSize = '24px';
+lis[j].style.color = '#999';
+}
+//让选中的索引的图⽚显⽰，对应的圆圈⾼亮
+imgs[i].style.display = 'block'; 
+lis[i].style.fontSize = '26px';
+lis[i].style.color = '#fff'; 
+}
+//⾃动播放的事件处理
+function autobofang(){
+if(pic_index >= lis.length){
+pic_index = 0;
+}
+change1(pic_index);
+pic_index++;
+}
+//⾃动播放的图⽚转化中的事件
+function change1(index){ 
+picChange(index);
+//⿏标移⼊ul标签，⾃动播放图⽚暂停
+uls[0].addEventListener("mouseover",pause,false);
+//⿏标移出ul标签，⾃动播放图⽚继续
+uls[0].addEventListener("mouseout",go,false);
+}
+//⾃动播放暂停函数
+function pause(event){
+var event=event||window.event;
+var target=event.target||event.srcElement;
+switch(target.id){
+case "pic1":
+clearInterval(pic_time); 
+break;
+case "pic2":
+clearInterval(pic_time);
+break;
+case "pic3":
+clearInterval(pic_time);
+break;
+case "pic4":
+clearInterval(pic_time);
+break;
+case "pic5":
+clearInterval(pic_time);
+break;
+case "pic6":
+clearInterval(pic_time);
+break;
+}
+}
+//⾃动播放图⽚继续函数
+function go(event){
+var event=event||window.event;
+var target=event.target||event.srcElement; 
+switch(target.id){
+case "pic1":
+pic_index = 1; 
+pic_time = setInterval(autobofang,3000);
+break;
+case "pic2":
+pic_index = 2; 
+pic_time = setInterval(autobofang,3000);
+break;
+case "pic3":
+pic_index = 3; 
+pic_time = setInterval(autobofang,3000); 
+break;
+case "pic4":
+pic_index = 4; 
+pic_time = setInterval(autobofang,3000); 
+break;
+case "pic4":
+pic_index = 5; 
+pic_time = setInterval(autobofang,3000); 
+break;
+case "pic4":
+pic_index = 6; 
+pic_time = setInterval(autobofang,3000); 
+break;
+}
+}
+}
+
+</script>
+<style type="text/css">
+
+.WZ {font-family:黑体;
+font-size:36px}
+a
+{text-decoration:none;
+color:#000;
+border:#FC0;
+}
+a:hover{color:#97968A;}
+.KK:hover{border-bottom:#61719C solid 8px;}
+p
+{font-size:36px}
+
+#content{
+width: 100%;
+height:700px;
+position: relative;
+}
+.carousel-inner{
+	position: relative;
+	width: 100%;
+	overflow:hidden;
+	height: 100%;
+}
+.carousel-inner>.item>img{
+display: block; 
+line-height: 1; 
+z-index: 1;
+}
+.carousel-indicators{
+position: absolute;
+bottom:10px;
+left:45%;
+z-index: 2;
+list-style-type: none;
+}
+.carousel-indicators li{
+display:inline-block;
+padding: 0 15px;
+font-size: 24px;
+color:#999; 
+cursor: pointer;
+z-index: 2;
+}
+.active1{
+font-size: 28px;
+color:#fff;
+}
+.carousel-control{
+position: absolute;
+text-decoration:none;
+color: #999;
+font-weight: bold;
+opacity: .5;
+font-size: 40px;
+z-index: 3;
+}
+.carousel-control:hover{
+color:fff;
+text-decoration: none;
+opacity: .9;
+outline: none;
+font-size: 42px;
+}
+.prev{
+top: 30%; 
+left:20px; 
+}
+.next{
+top:30%;
+right: 20px;
+}
+.QQ1{
+		border-radius: 20px 0px 0px 20px;
+	}
+.QQ2{
+		border-radius: 0px 20px 20px 0px;
+	}
+.QQ3{
+		border-radius: 30px 30px 30px 30px;
+	}
+</style>
+
+<style type="text/css">
+    #box{
+        width: 600px;
+        margin: 30px auto;
+        font-family: 'Microsoft YaHei';
+        font-size: 30px;
+    }
+    input{
+        width: 432px;
+        border: 1px solid #e2e2e2;
+        height: 75px;
+        float: left;
+        background-image: url(images/search.jpg);
+        background-repeat: no-repeat;
+        background-size: 25px;
+        background-position:5px center;
+        padding:0 0 0 40px;
+    }
+    #search{
+        width: 120px;
+        height: 75px;
+        float: right;
+        background: black;
+        color: white;
+        text-align: center;
+        line-height: 80px;
+        cursor: pointer;
+    }
+	.SS
+	{font-size:30px;}
+</style>
+</head>
+
+<body bgcolor="#CCCCCC">
+<table width="2926" height="3247" border="0" align="center" bgcolor="#FFFFFF">
+<tr>
+<td width="638">
+<form action="../轨道交通线位表/主界面.html" method="post"><a href="../轨道交通线位表/主界面.html">
+    <input type="button" class="SS" value="轨道交通线位表"/></a>
+</form>
+</td>
+<td width="1677" align="center"><font face="黑体" size="10"><b>Metro TIU轨道交通网</b></font></td>
+<td width="600">
+ <div id="box">
+        <input name="search" type="text" class="SS" placeholder="请输入关键字">
+        <div id="search">搜索</div> 
+    </div>
+</td>
+</tr>
+  <tr>
+    <td height="280" colspan="3"><img src="网页LOGO_画板 1.png" width="2924" height="276" /></td>
+  </tr>
+  <tr>
+    <td height="185" colspan="3"><table width="2396" height="126" border="0" align="center">
+      <tr align="center" bgcolor="#CCCCCC" class="TT">
+        <td width="366" height="50" class="WZ KK QQ1"><a href="00主页.html">首 页</a></td>
+        <td width="385" class="WZ KK"><a href="../城市地铁/主界面.html">城 市 地 铁</a></td>
+        <td width="422" class="WZ KK"><a href="../城际铁路/主界面.html">城 际 铁 路</a></td>
+        <td width="417" class="WZ KK"><a href="../列车车型/主界面.html">列 车 车 型</a></td>
+        <td width="390" class="WZ KK"><a href="../联系我们/主界面.html">联 系 我 们</a></td>
+        <td width="390" class="WZ KK QQ2"><a href="../登录/主界面.html">登 录</a></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td height="778" colspan="3" align="center">
+	<table width="2000" border="0">
+  <tr align="center">
+    <td width="1812">
+    <div id="content"> <!-- 总的⽗容器 -->
+<div class="carousel-inner"> <!-- 包含图⽚的容器 -->
+<div class="item"><img src="车辆/列车组-01.png" alt="第⼀张图⽚" width="2005" height="791"></div>
+<div class="item"><img src="车辆/列车组-02.png" alt="第⼆张图⽚" width="2005" height="791"></div>
+<div class="item"><img src="车辆/列车组-03.png" alt="第三张图⽚" width="2005" height="791"></div>
+<div class="item"><img src="车辆/列车组-04.png" alt="第四张图⽚" width="2005" height="791"></div>
+<div class="item"><img src="车辆/列车组-05.png" alt="第五张图⽚" width="2005" height="791"></div>
+<div class="item"><img src="车辆/列车组-06.png" alt="第六张图⽚" width="2005" height="791"></div>
+</div>
+<!-- 图⽚下⽅的指⽰圆圈-->
+<ul class="carousel-indicators">
+<li id='pic1'>●</li>
+<li id='pic2'>●</li>
+<li id='pic3'>●</li>
+<li id='pic4'>●</li>
+<li id='pic4'>●</li>
+<li id='pic4'>●</li>
+</ul>
+<!-- 图⽚左右⽅来回滚动图⽚的左右箭头-->
+<a href="#" class="carousel-control prev"><span><font face="黑体" size="+6"><</font></span></a>
+<a href="#" class="carousel-control next"><span><font face="黑体" size="+6">></font></span></a>
+</div>
+</td>
+  </tr>
+</table>
+</td>
+  </tr>
+  <tr>
+    <td height="1533" colspan="3">
+    <table width="2000" height="758" border="0" align="center">
+  <tr>
+    <td width="1500" height="128" align="center" bgcolor="#61719C" class="WZ"><b><font color="#FFFFFF" face="黑体">网站简介</font></b></td>
+  </tr>
+  <tr>
+    <td background="网页LOGO - 底纹_画板 1.png" align="center"><p>&ldquo;Metro TIU轨道交通网&rdquo;是一个专注于粤港澳大湾区城市地铁、城际铁路的多媒体网站。 
+      </p>
+      <p >在这里我们将带你们走进轨道交通的世界，</p>
+      <p >感受轨道交通给人类出行带来的便利，</p>
+      <p >享受交通互联下的城市生活，</p>
+      <p >领略快速交通的魅力。 </p>
+      <p >我们的期望：“注力湾区Metro，共待交通互联！”</p>
+      <p >我们的口号：“一路向未来” </p></td>
+    
+  </tr>
+</table>
+<table width="2019" align="center">
+<tr>
+  <td width="1258" height="90" align="center" bgcolor="#61719C" class="WZ"><b><font color="#FFFFFF" face="黑体">特此声明</font></b></td>
+    <td width="749" align="center" class="WZ" bgcolor="#61719C"><b><font color="#FFFFFF" face="黑体">往期文章</font></b></td>
+</tr>
+<tr>
+<td background="网页LOGO - 底纹_画板 1.png"><p>1.本网站不具备任何商业用途。</p>
+  <p>2.本网站设计师为TIU，对网站内全部内容具有独立解释权。</p>
+  <p>3.网站数据来源于网络与各地交通局规划，不保证准确性与实效性，不可作为任何规划依据。</p>
+  <p>4.网站内容仅供参考，禁止修改、去水印、商业用途与其他用途，如有使用需要请联系作者，同意后保留申明与作者出处。</p></td>
+    <td height="523" background="网页LOGO - 底纹_画板 1.png">
+    <marquee behavior="scroll" direction="up" scrollamount="8" scrolldelay="10" onmouseover="this.stop()" onmouseout="this.start()">
+    <p align="center"><a href="https://mp.weixin.qq.com/s/wq4pJc_gFStJ_HB-xH1pYQ">深圳地铁/深铁城际车辆与车站信息</a></p>
+    <p align="center"><a href="https://mp.weixin.qq.com/s/sAcuSHBRugYQVxDq_1iDYg">香港地铁东铁线跨海段</a></p>
+    <p align="center"><a href="https://mp.weixin.qq.com/s/tA_Di29993bIrm_nNqx4Ng">广州地铁7号线西延段明天开通！</a></p>
+    <p align="center"><a href="https://mp.weixin.qq.com/s/V-zohtzdBksCTctx3AY0YA">深圳地铁现实线路图</a></p>
+    <p align="center"><a href="https://mp.weixin.qq.com/s/5-z4wdI6bVydrvMEhKd_Jw">广州地铁22号线首通段</a></p>
+    <p align="center"><a href="https://mp.weixin.qq.com/s/oLHpNDwPcA38-DuaIpwVlQ">粤港澳大湾区运营线盘点</a></p>
+    <p align="center"><a href="https://mp.weixin.qq.com/s/0sDBhg22CJ3sfz18HH_Jjw">粤港澳大湾区地铁建设合集，来啦！！</a></p>
+    <p align="center"><a href="https://mp.weixin.qq.com/s/pHCkSWG88wikE4Fy4xCvOA">深圳轨道交通一号线的发展历程</a></p>
+    <p align="center"><a href="https://mp.weixin.qq.com/s/xaZGQWN8Q84iHNNadYEoOA">New year 新图来啦！！</a></p>
+    </marquee>
+    </td>
+</tr>
+</table>
+<table width="679" height="440" border="0" align="center">
+  <tr>
+    <td>地铁列车讲解</td>
+  </tr>
+  <tr>
+    <td align="center">
+    <hr>
+	<video src="地铁路程排名.mp4" controls ></video>
+<hr>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="2151" height="149" border="0" align="center">
+  <tr align="center">
+    <td width="319" bgcolor="#CCCCCC" class="QQ1"><p>友情链接</p></td>
+    <td width="244" class="KK"><p><a href="https://www.szmc.net/">深圳地铁</a></p></td>
+    <td width="244" class="KK"><p><a href="https://www.gzmtr.com/">广州地铁</a></p></td>
+    <td width="252" class="KK"><p><a href="https://www.fmetro.net/">佛山地铁</a></p></td>
+    <td width="284" class="KK"><p><a href="http://www.dggdjt.com/">东莞轨道交通</a></p></td>
+    <td width="256" class="KK"><p><a href="https://www.mtr.com.hk/ch/customer/main/index.html">港铁MTR</a></p></td>
+    <td width="284" class="KK"><p><a href="http://www.mtrsz.com.cn/chi/">港铁（深圳）</a></p></td>
+    <td width="234" class="KK"><p><a href="https://www.mtr.com.mo/sc/AboutUs/MLRT">澳门轻轨</a></p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<hr>
+    </td>
+  <tr>
+    <td height="169" colspan="3" align="center">
+      <p><b>Metro TIU公司 版权所有</b></p>
+      <p><b>Copyright @ Dongguan Rail Transit CO.,LTD.All Rights</b></p>
+      <p><b>粤ICP备20220630号-2 技术支持：深圳天佑信息股份有限公司</b></p></td>
+  </tr>
+  <tr>
+  <td colspan="3"></tr>
+</table>
+</body>
+</html>
